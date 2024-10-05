@@ -35,7 +35,7 @@ fun RootScreen(artViewModel: ArtViewModel) {
 
     //SearchImageScreen
     val isLoading by artViewModel.isLoadingState.collectAsState()
-    val images by artViewModel.imagesList .collectAsState()
+    val images by artViewModel.imagesList.collectAsState()
 
     //RootScreen
     artViewModel.navController = rememberNavController()
@@ -65,6 +65,9 @@ fun RootScreen(artViewModel: ArtViewModel) {
             ) {
                 composable(ArtBookRoutes.ArtsScreen) {
                     ArtsScreen(
+                        deleteArt = { art ->
+                            artViewModel.deleteArt(art)
+                        },
                         artList,
                         onNavigateToAdd = {
                             navController.navigate(ArtBookRoutes.AddArtsScreen)
@@ -78,7 +81,7 @@ fun RootScreen(artViewModel: ArtViewModel) {
                         searchImage = { searchQuery ->
                             artViewModel.searchImage(searchQuery)
                         },
-                        setSelectedImage ={url ->
+                        setSelectedImage = { url ->
                             artViewModel.setSelectedImage(url)
                         }
                     )

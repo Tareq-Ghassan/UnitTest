@@ -57,6 +57,7 @@ class ArtViewModel @Inject constructor(private val repositoryInterface: ArtRepos
 
     fun deleteArt(art: Art) = viewModelScope.launch {
         repositoryInterface.deleteArtFromDB(art)
+        getArts()
     }
 
     fun makeArt(name: String, artistName: String, year: String) {

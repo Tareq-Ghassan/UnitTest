@@ -18,6 +18,7 @@ import com.oppensooq.artbook.presentation.ui.widget.ArtsItem
 
 @Composable
 fun ArtsScreen(
+    deleteArt: (art: Art) -> Unit,
     arts: List<Art>,
     onNavigateToAdd: () -> Unit,
 ) {
@@ -34,8 +35,8 @@ fun ArtsScreen(
     }) { innerPadding ->
         val ignore = innerPadding
         LazyColumn(modifier = Modifier.fillMaxSize()) {
-            items(arts) { art ->
-                ArtsItem(art)
+            items(arts, key = { it.id }) { art ->
+                ArtsItem(art, deleteArt)
             }
         }
     }
@@ -44,7 +45,7 @@ fun ArtsScreen(
 @Preview(showBackground = true)
 @Composable
 fun ArtsScreenPreview() {
-    ArtsScreen(arts = emptyList()) {
+    ArtsScreen({}, arts = emptyList(), {
         println("clicked")
-    }
+    })
 }
