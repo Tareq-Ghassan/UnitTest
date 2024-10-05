@@ -1,4 +1,4 @@
-package com.oppensooq.artbook.ui.widget
+package com.oppensooq.artbook.presentation.ui.widget
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -15,17 +15,16 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.SubcomposeAsyncImage
-import com.oppensooq.artbook.ui.state.LoadingImageStatus
+import com.oppensooq.artbook.data.model.Art
+import com.oppensooq.artbook.presentation.ui.state.LoadingImageStatus
 
 @Composable
-fun ArtsItem() {
+fun ArtsItem(art: Art) {
     Row(
-        verticalAlignment = Alignment.CenterVertically,
-        modifier = Modifier.fillMaxWidth()
+        verticalAlignment = Alignment.CenterVertically, modifier = Modifier.fillMaxWidth()
     ) {
-        SubcomposeAsyncImage(
-            contentScale = ContentScale.FillBounds,
-            model = "https://opensooqui2.os-cdn.com/api/common/category/Autos.png",
+        SubcomposeAsyncImage(contentScale = ContentScale.FillBounds,
+            model = art.imageUrl,
             contentDescription = "Art image",
             modifier = Modifier
                 .padding(16.dp)
@@ -37,12 +36,11 @@ fun ArtsItem() {
             error = {
                 LoadingImageStatus(LoadingImageStatus.Error)
 
-            }
-        )
+            })
         Column {
-            Text(text = "Art Name", fontSize = 28.sp)
-            Text(text = "Artist Name", fontSize = 20.sp)
-            Text(text = "Year", fontSize = 18.sp)
+            Text(text = art.name, fontSize = 28.sp)
+            Text(text = art.artistName, fontSize = 20.sp)
+            Text(text = art.year, fontSize = 18.sp)
 
         }
     }
@@ -51,5 +49,12 @@ fun ArtsItem() {
 @Preview(showBackground = true)
 @Composable
 fun ArtsItemPreview() {
-    ArtsItem()
+    ArtsItem(
+        Art(
+            "1",
+            "name",
+            "2020",
+            "https://opensooqui2.os-cdn.com/api/common/category/Autos.png"
+        ),
+    )
 }

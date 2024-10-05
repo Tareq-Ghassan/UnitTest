@@ -1,4 +1,4 @@
-package com.oppensooq.artbook.ui.theme
+package com.oppensooq.artbook.presentation.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

@@ -22,6 +22,7 @@ hiltAndroidCompiler = "2.51.1"
 mockitoAndroid = "4.7.0"
 mockitoCore = "4.11.0"
 mockitoCoreVersion = "4.11.0"
+navigationCompose = "2.8.2"
 realmDB = "1.11.0"
 hilt = "2.51.1"
 kotlinxCoroutinesAndroid = "1.8.1"
@@ -38,6 +39,7 @@ androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = 
 androidx-core-testing = { module = "androidx.arch.core:core-testing", version.ref = "coreTesting" }
 androidx-espresso-core-v351 = { module = "androidx.test.espresso:espresso-core", version.ref = "espressoCoreVersion" }
 androidx-fragment-testing = { module = "androidx.fragment:fragment-testing", version.ref = "fragmentTesting" }
+androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
 hamcrest-all = { module = "org.hamcrest:hamcrest-all", version.ref = "hamcrestAll" }
 hilt-android-compiler-v248 = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hiltAndroidCompilerVersion" }
 hilt-android-testing = { module = "com.google.dagger:hilt-android-testing", version.ref = "hiltAndroidTesting" }

@@ -1,4 +1,4 @@
-package com.oppensooq.artbook.ui.theme
+package com.oppensooq.artbook.presentation.ui.theme
 
 import android.app.Activity
 import android.os.Build

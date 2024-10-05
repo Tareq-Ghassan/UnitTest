@@ -1,11 +1,11 @@
-package com.oppensooq.artbook.ui.widget
+package com.oppensooq.artbook.presentation.ui.widget
 
 import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.oppensooq.artbook.R
-import com.oppensooq.artbook.ui.state.LoadingImageStatus
+import com.oppensooq.artbook.presentation.ui.state.LoadingImageStatus
 
 @Composable
 fun LoadingImageStatus(status: LoadingImageStatus) {

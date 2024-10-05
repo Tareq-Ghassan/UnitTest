@@ -1,7 +1,7 @@
-package com.oppensooq.artbook.ui.widget
+package com.oppensooq.artbook.presentation.ui.widget
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.ElevatedButton
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
@@ -23,19 +24,21 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.SubcomposeAsyncImage
+import com.oppensooq.artbook.data.model.ImageResult
+import com.oppensooq.artbook.presentation.ui.state.LoadingImageStatus
 
 
 @Composable
-fun ImageApi(innerPadding: PaddingValues) {
-    var loading by remember { mutableStateOf(true) }
-    var name by remember { mutableStateOf("") }
-    val listOfImages = listOf(
-        "https://opensooqui2.os-cdn.com/api/common/category/Autos.png",
-        "https://opensooqui2.os-cdn.com/api/common/category/Autos.png",
-        "https://opensooqui2.os-cdn.com/api/common/category/Autos.png",
-    )
+fun ImageApi(
+    images:List<ImageResult>,
+    loading: Boolean,
+    searchImage: (String) -> Unit,
+    setSelectedImage: (String) -> Unit,
+) {
+    var query by remember { mutableStateOf("") }
     Column(
-        modifier = Modifier.padding(innerPadding).fillMaxWidth(),
+        modifier = Modifier
+            .fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Row(
@@ -47,29 +50,36 @@ fun ImageApi(innerPadding: PaddingValues) {
                 )
             }
             TextField(
-                value = name,
-                onValueChange = { name = it },
+                value = query,
+                onValueChange = { query = it },
                 placeholder = { Text("Search Image") },
                 modifier = Modifier
-                    .padding(vertical = 16.dp)
-                    .fillMaxWidth()
+                    .padding(16.dp)
+                    .width(if (loading) 200.dp else 250.dp)
             )
+            ElevatedButton(onClick = {
+                searchImage(query)
+            }) {
+                Text(text = "Search")
+            }
         }
         LazyColumn {
-            items(listOfImages) {
+            items(images) {
                 SubcomposeAsyncImage(
                     contentScale = ContentScale.FillBounds,
-                    model =it,
+                    model = it.userImageURL,
                     contentDescription = "Art image",
                     modifier = Modifier
                         .padding(16.dp)
                         .width(132.dp)
-                        .height(132.dp),
+                        .height(132.dp).clickable {
+                            setSelectedImage(it.userImageURL)
+                        },
                     loading = {
-                        LoadingImageStatus(com.oppensooq.artbook.ui.state.LoadingImageStatus.Loading)
+                        LoadingImageStatus(LoadingImageStatus.Loading)
                     },
                     error = {
-                        LoadingImageStatus(com.oppensooq.artbook.ui.state.LoadingImageStatus.Error)
+                        LoadingImageStatus(LoadingImageStatus.Error)
 
                     }
                 )
@@ -83,5 +93,5 @@ fun ImageApi(innerPadding: PaddingValues) {
 @Preview(showBackground = true)
 @Composable
 fun ImageApiPreview() {
-    ImageApi(PaddingValues(16.dp))
+    ImageApi(emptyList(),false,{},{})
 }

@@ -92,8 +92,7 @@ dependencies {
     implementation(libs.library.base)
 
     // Navigation
-    implementation (libs.androidx.navigation.fragment)
-    implementation (libs.androidx.navigation.ui)
+    implementation(libs.androidx.navigation.compose)
 
 
 

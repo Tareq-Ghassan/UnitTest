@@ -1,4 +1,4 @@
-package com.oppensooq.artbook.ui.theme
+package com.oppensooq.artbook.presentation.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
