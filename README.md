@@ -59,12 +59,6 @@ The app follows the **MVVM (Model-View-ViewModel)** architecture pattern for bet
 This app is focused on practicing unit testing. The core logic for saving, deleting, and fetching artworks from the database has been covered with unit tests.
 
 - **Unit Tests**: Test the ViewModel logic and ensure proper interactions with the database and API.
-  
-## Future Enhancements
-
-- Add more comprehensive error handling.
-- Implement image caching for faster image loading.
-- Improve the UI/UX for better user experience.
 
 ## License
 
