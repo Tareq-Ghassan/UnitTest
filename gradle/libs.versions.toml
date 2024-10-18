@@ -3,7 +3,7 @@ agp = "8.5.2"
 core = "1.6.1"
 coreTesting = "2.2.0"
 espressoCoreVersion = "3.6.1"
-fragmentTesting = "1.8.3"
+fragmentTesting = "1.8.4"
 hamcrestAll = "1.3"
 hiltAndroidCompilerVersion = "2.51.1"
 hiltAndroidTesting = "2.43.2"
@@ -15,20 +15,19 @@ espressoCore = "3.6.1"
 kotlinxCoroutinesTest = "1.7.3"
 kotlinxCoroutinesTestVersion = "1.7.3"
 lifecycleRuntimeKtx = "2.8.6"
-activityCompose = "1.9.2"
-composeBom = "2024.09.02"
+activityCompose = "1.9.3"
+composeBom = "2024.10.00"
 coilCompose = "2.7.0"
 hiltAndroidCompiler = "2.51.1"
 mockitoAndroid = "4.7.0"
 mockitoCore = "4.11.0"
 mockitoCoreVersion = "4.11.0"
-navigationCompose = "2.8.2"
+navigationCompose = "2.8.3"
 realmDB = "1.11.0"
 hilt = "2.51.1"
 kotlinxCoroutinesAndroid = "1.8.1"
 retrofit = "2.9.0"
 lifecycleViewmodel = "2.8.6"
-navigationFragment = "2.8.1"
 robolectric = "4.8.1"
 truth = "1.1.3"
 
@@ -70,8 +69,6 @@ converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref
 androidx-lifecycle-livedata = { module = "androidx.lifecycle:lifecycle-livedata", version.ref = "lifecycleViewmodel" }
 androidx-lifecycle-viewmodel = { module = "androidx.lifecycle:lifecycle-viewmodel", version.ref = "lifecycleViewmodel" }
 library-base = { module = "io.realm.kotlin:library-base", version.ref = "realmDB" }
-androidx-navigation-fragment = { module = "androidx.navigation:navigation-fragment", version.ref = "navigationFragment" }
-androidx-navigation-ui = { module = "androidx.navigation:navigation-ui", version.ref = "navigationFragment" }
 robolectric = { module = "org.robolectric:robolectric", version.ref = "robolectric" }
 truth = { module = "com.google.truth:truth", version.ref = "truth" }
 

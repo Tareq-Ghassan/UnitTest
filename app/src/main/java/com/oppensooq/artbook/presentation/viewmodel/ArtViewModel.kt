@@ -1,15 +1,12 @@
 package com.oppensooq.artbook.presentation.viewmodel
 
 import android.widget.Toast
-import androidx.compose.material3.SnackbarHostState
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavHostController
-import androidx.navigation.compose.rememberNavController
 import com.oppensooq.artbook.data.model.Art
 import com.oppensooq.artbook.data.model.ImageResponse
 import com.oppensooq.artbook.data.repository.ArtRepositoryInterface
-import com.oppensooq.artbook.navigation.ArtBookRoutes
 import com.oppensooq.artbook.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -46,13 +43,14 @@ class ArtViewModel @Inject constructor(private val repositoryInterface: ArtRepos
     val isLoadingState: StateFlow<Boolean> get() = isLoading
 
 
-    fun restArtMessage() {
-        insetArtMsg.value = Resource.loading(null)
-    }
+//    fun restArtMessage() {
+//        insetArtMsg.value = Resource.loading(null)
+//    }
 
     fun setSelectedImage(url: String) {
         selectedImage.value = url
         navController.popBackStack()
+        images.value = Resource.loading(null)
     }
 
     fun deleteArt(art: Art) = viewModelScope.launch {
@@ -103,7 +101,6 @@ class ArtViewModel @Inject constructor(private val repositoryInterface: ArtRepos
             val response = repositoryInterface.getImageAPI(searchQuery)
             images.value = response
             isLoading.value = false
-
         }
     }
 
@@ -115,7 +112,7 @@ class ArtViewModel @Inject constructor(private val repositoryInterface: ArtRepos
         arts.value = repositoryInterface.getArtFromDB()
     }
 
-    private fun setAppBarTitle() {
-        title.value = "Art Book"
-    }
+//    private fun setAppBarTitle() {
+//        title.value = "Art Book"
+//    }
 }
