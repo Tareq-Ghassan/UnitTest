@@ -4,37 +4,38 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.test.filters.SmallTest
 import com.oppensooq.artbook.data.model.Art
 import io.realm.kotlin.Realm
-import io.realm.kotlin.RealmConfiguration
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
-import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import com.google.common.truth.Truth.assertThat
+import dagger.hilt.android.testing.HiltAndroidRule
+import dagger.hilt.android.testing.HiltAndroidTest
+import org.junit.After
+import org.junit.Before
+import javax.inject.Inject
+import javax.inject.Named
 
 @SmallTest
 @ExperimentalCoroutinesApi
+@HiltAndroidTest
 class TestRealmDB {
-    private lateinit var realm: Realm
-
-
     @get:Rule
     var instantTaskExecutorRule = InstantTaskExecutorRule()
 
+    @get:Rule
+    var hiltRule = HiltAndroidRule(this)
+
+    @Inject
+    @Named("testDatabase")
+    lateinit var realm: Realm
 
     @Before
     fun setup() {
-        val config = RealmConfiguration.Builder(
-            schema = setOf(
-                Art::class
-            )
-        ).name("artBook.realm")
-            .schemaVersion(1)
-            .deleteRealmIfMigrationNeeded()
-            .build()
-        realm = Realm.open(config)
+        hiltRule.inject()
     }
 
+    @After
     fun tearDown() {
         realm.close()
     }
