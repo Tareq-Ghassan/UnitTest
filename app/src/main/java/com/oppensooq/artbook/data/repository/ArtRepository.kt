@@ -28,8 +28,8 @@ class ArtRepository @Inject constructor(
 
     override suspend fun deleteArtFromDB(art: Art) {
         realm.writeBlocking {
-            val cachedPokemon = query(Art::class, "id == $0", art.id).find()
-            delete(cachedPokemon)
+            val cachedArt = query(Art::class, "id == $0", art.id).find()
+            delete(cachedArt)
         }
     }
 
